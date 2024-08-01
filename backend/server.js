@@ -80,7 +80,7 @@ const requestSchema = new mongoose.Schema({
 const Request = mongoose.model('Request', requestSchema);
 
 // Change this route to /labrequests
-app.get('https://hacck4-change-labs-api.vercel.app/labrequests', async (req, res) => {
+app.get('/labrequests', async (req, res) => {
   try {
     console.log('Fetching requests...');
     const requests = await Request.find();
@@ -93,7 +93,7 @@ app.get('https://hacck4-change-labs-api.vercel.app/labrequests', async (req, res
 });
 
 // Change this route to /labrequests/:id
-app.patch('https://hacck4-change-labs-api.vercel.app/labrequests/:id', async (req, res) => {
+app.patch('/labrequests/:id', async (req, res) => {
     const { id } = req.params;
     const { status } = req.body;
   
