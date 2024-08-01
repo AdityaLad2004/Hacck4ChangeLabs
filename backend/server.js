@@ -62,7 +62,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const app = express();
 
-app.use(cors({origin: '*',
+app.use(cors({origin: 'https://hacck4-change-labs-front.vercel.app/',
   methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],}));
 app.use(express.json());
 
@@ -80,7 +80,7 @@ const requestSchema = new mongoose.Schema({
 const Request = mongoose.model('Request', requestSchema);
 
 // Change this route to /labrequests
-app.get('https://hacck4-change-labs-server.vercel.app/labrequests', async (req, res) => {
+app.get('/labrequests', async (req, res) => {
   try {
     console.log('Fetching requests...');
     const requests = await Request.find();
@@ -93,7 +93,7 @@ app.get('https://hacck4-change-labs-server.vercel.app/labrequests', async (req, 
 });
 
 // Change this route to /labrequests/:id
-app.patch('https://hacck4-change-labs-server.vercel.app/labrequests/:id', async (req, res) => {
+app.patch('/labrequests/:id', async (req, res) => {
     const { id } = req.params;
     const { status } = req.body;
   
