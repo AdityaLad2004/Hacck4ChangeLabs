@@ -62,8 +62,11 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const app = express();
 
-app.use(cors({origin: 'https://hacck4-change-labs-front.vercel.app/',
-  methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],}));
+app.use(cors({
+  origin: 'https://hacck4-change-labs-front.vercel.app',
+  methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],
+}));
+
 app.use(express.json());
 
 mongoose.connect('mongodb+srv://adityalad2004:adityalad2004@cluster0.ftfwq8v.mongodb.net/labRequests?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
