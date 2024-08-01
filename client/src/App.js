@@ -13,7 +13,8 @@ function App() {
       .catch(error => console.error('Error fetching requests:', error));
   }, []);
 
-  return (
+  
+  return ( 
     <Router>
       <div className="container">
         <h1>Lab Requests</h1>

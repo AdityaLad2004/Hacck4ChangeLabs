@@ -35,11 +35,11 @@
 // app.patch('/requests/:id', async (req, res) => {
 //     const { id } = req.params;
 //     const { status } = req.body;
-  
+
 //     if (!['ACCEPTED', 'REJECTED'].includes(status)) {
 //       return res.status(400).send('Invalid status');
 //     }
-  
+
 //     try {
 //       const updatedRequest = await Request.findByIdAndUpdate(id, { status }, { new: true });
 //       if (!updatedRequest) {
@@ -63,7 +63,7 @@ const cors = require('cors');
 const app = express();
 
 app.use(cors({
-  origin: 'https://hacck4-change-labs-front.vercel.app',
+  origin: 'https://hacck4-change-labs-front.vercel.app/labrequest',
   methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],
 }));
 
@@ -72,13 +72,13 @@ app.use(express.json());
 mongoose.connect('mongodb+srv://adityalad2004:adityalad2004@cluster0.ftfwq8v.mongodb.net/labRequests?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
 
 const requestSchema = new mongoose.Schema({
-    title: { type: String, required: true },
-    details: {
-      sender: String,
-      requirements: String
-    },
-    status: { type: String, enum: ['PENDING', 'ACCEPTED', 'REJECTED'], default: 'PENDING' }
-  }, { collection: 'lab' });
+  title: { type: String, required: true },
+  details: {
+    sender: String,
+    requirements: String
+  },
+  status: { type: String, enum: ['PENDING', 'ACCEPTED', 'REJECTED'], default: 'PENDING' }
+}, { collection: 'lab' });
 
 const Request = mongoose.model('Request', requestSchema);
 
@@ -97,24 +97,24 @@ app.get('/labrequests', async (req, res) => {
 
 // Change this route to /labrequests/:id
 app.patch('/labrequests/:id', async (req, res) => {
-    const { id } = req.params;
-    const { status } = req.body;
-  
-    if (!['ACCEPTED', 'REJECTED'].includes(status)) {
-      return res.status(400).send('Invalid status');
+  const { id } = req.params;
+  const { status } = req.body;
+
+  if (!['ACCEPTED', 'REJECTED'].includes(status)) {
+    return res.status(400).send('Invalid status');
+  }
+
+  try {
+    const updatedRequest = await Request.findByIdAndUpdate(id, { status }, { new: true });
+    if (!updatedRequest) {
+      return res.status(404).send('Request not found');
     }
-  
-    try {
-      const updatedRequest = await Request.findByIdAndUpdate(id, { status }, { new: true });
-      if (!updatedRequest) {
-        return res.status(404).send('Request not found');
-      }
-      res.json(updatedRequest);
-    } catch (error) {
-      console.error('Error updating request status:', error);
-      res.status(500).send('Error updating request status');
-    }
-  });
+    res.json(updatedRequest);
+  } catch (error) {
+    console.error('Error updating request status:', error);
+    res.status(500).send('Error updating request status');
+  }
+});
 
 app.listen(5004, () => {
   console.log('Server running on port 5004');
