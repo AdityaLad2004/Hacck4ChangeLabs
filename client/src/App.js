@@ -129,7 +129,8 @@ function App() {
   const [requests, setRequests] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5004/labrequests')
+    
+    axios.get('https://hacck4-change-labs-api1.vercel.app/labrequests')
       .then(response => setRequests(response.data))
       .catch(error => console.error('Error fetching requests:', error));
   }, []);
