@@ -12,15 +12,20 @@ function RequestDetails({ requests }) {
   }
 
   const handleStatusChange = (status) => {
-    axios.patch(`https://hacck4-change-labs-api.vercel.app/labrequests/${request._id}`, { status })
+    axios.patch(`https://hacck4-change-labs-api.vercel.app/labrequests/${request._id}`, { status }, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
       .then(response => {
         alert(`Request status updated to ${status}`);
-        window.location.reload(); // Reload the page to see the updated status
+        window.location.reload();
       })
       .catch(error => {
         console.error('Error updating request status:', error.response ? error.response.data : error.message);
         alert('Failed to update request status. Please try again.');
       });
+    
   };
 
   return (
