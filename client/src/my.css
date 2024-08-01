@@ -1,0 +1,72 @@
+/* my.css */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #121212; /* Dark background */
+    color: #e0e0e0; /* Light text */
+  }
+  
+  h1 {
+    color: #f5a623; /* Accent color */
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+  }
+  
+  li {
+    margin: 10px 0; /* Vertical margin for spacing between buttons */
+  }
+  
+  button {
+    background-color: #f5a623; /* Accent color */
+    color: #121212; /* Dark text */
+    border: none;
+    padding: 15px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+  }
+  
+  button:hover {
+    background-color: #e09300; /* Slightly darker on hover */
+  }
+  
+  div {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    background-color: #1e1e1e; /* Dark background for content */
+    border-radius: 10px;
+  }
+  
+  .request-buttons {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 10px; /* Space between buttons */
+    align-items: center; /* Center buttons horizontally */
+  }
+  
+  .request-buttons button {
+    background-color: #f5a623; /* Accent color */
+    color: #121212; /* Dark text */
+    border: none;
+    padding: 15px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .request-buttons button:hover {
+    background-color: #e09300; /* Slightly darker on hover */
+  }
